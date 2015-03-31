@@ -118,9 +118,9 @@ inoremap <silent> <C-Down>   <Esc>:wincmd j<CR>i
 inoremap <silent> <C-Left>   <Esc>:wincmd h<CR>i
 inoremap <silent> <C-Right>  <Esc>:wincmd l<CR>i
 
-" shortcur for shell command
+" shortcut for shell command
 nnoremap <C-X>  :!<Space>
-nnoremap <C-X>  <Esc>:!<Space>
+inoremap <C-X>  <Esc>:!<Space>
 
 " shortcut for make
 nnoremap <F9>   :make<CR>
