@@ -21,7 +21,7 @@
 "   Credits goes to original authors of packages
 """""""""""""""""""""""""""""""""""""""""
 
-" indent behaviour
+" * indent behaviour
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -30,10 +30,10 @@ set autoindent
 set modeline
 syntax on
 
-" line-number
+" * line-number
 set number
 
-" default utf-8, fallback encodings
+" * encoding: default utf-8, fallback encodings
 if has('multi_byte')
   set encoding=utf-8
   setglobal fileencoding=utf-8
@@ -48,7 +48,7 @@ if has('multi_byte')
   endif
 endif
 
-" GVIM specific
+" * GVIM specific
 if has('gui_running') 
   set lines=30 columns=120 linespace=1
   set background=light
@@ -60,7 +60,7 @@ if has('gui_running')
   endif	
 endif  
 
-" Notepad-like StatusLine
+" * Notepad-like StatusLine
 " Credit goes to [http://stackoverflow.com/questions/5375240/a-more-useful-statusline-in-vim]
 " TODO: customize!
 function! HighlightSearch()
@@ -92,15 +92,15 @@ hi User8 guifg=#ffffff  guibg=#5b7fbb
 hi User9 guifg=#ffffff  guibg=#810085
 hi User0 guifg=#ffffff  guibg=#094afe
 
-" modern Backspace behaviour
+" * Backspace behaviour
 set nocompatible
 set backspace=indent,eol,start
 
-" 80th column line
+" * 80th column line
 set colorcolumn=81
 highlight ColorColumn ctermbg=lightgrey
 
-" shortcut for Save/Exit
+" * shortcut for Save/Exit
 nnoremap <C-S>	 :w!<CR>
 nnoremap <C-Q> 	 :q<CR>
 nnoremap <C-S-Q> :q!<CR>
@@ -108,7 +108,7 @@ inoremap <C-S>   <Esc><C-S>i
 inoremap <C-Q>   <Esc><C-Q>
 inoremap <C-S-Q> <Esc><C-S-Q>
 
-" vim split navigate
+" * vim split navigate
 nnoremap <silent> <C-Up>     :wincmd k<CR>
 nnoremap <silent> <C-Down>   :wincmd j<CR>
 nnoremap <silent> <C-Left>   :wincmd h<CR>
@@ -118,31 +118,38 @@ inoremap <silent> <C-Down>   <Esc>:wincmd j<CR>i
 inoremap <silent> <C-Left>   <Esc>:wincmd h<CR>i
 inoremap <silent> <C-Right>  <Esc>:wincmd l<CR>i
 
-" shortcur for shell command
+" * shortcur for shell command
 nnoremap <C-X>  :!<Space>
 nnoremap <C-X>  <Esc>:!<Space>
 
-" shortcut for make
+" * shortcut for make
 nnoremap <F9>   :make<CR>
 inoremap <F9>   <Esc>:make<CR>
 
-" insert Vim Modeline 
+" * insert Vim Modeline 
 function! AppendModeline()
   let l:modeline = printf("  vim: set ts=%d sw=%d tw=%d %set  :",
       \  &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
   let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
   call append(line(".")-1, l:modeline)
 endfunction
-
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
-" nodejs dev shortcut
+" * nodejs dev shortcut
 augroup node_dev
     autocmd!
     autocmd FileType javascript nmap <F9> <ESC>:w<CR>:! node %<CR><CR>
     autocmd FileType javascript imap <F9> <ESC>:w<CR>:! node %<CR><CR>i
+	autocmd FileType javascript set expandtab
 augroup END
 
-" shortcut for vimrc editing
+" * shortcut for vimrc editing
 nnoremap <Leader>rc :vsplit $MYVIMRC<CR>
 nnoremap <Leader>src :source $MYVIMRC<CR>
+
+" * shortcut for file explorer
+nnoremap <C-O> :Explore<CR>
+inoremap <C-O> <ESC>:Explore<CR>
+
+" * shortcut for vsplit
+nnoremap <bar> :vsplit<CR>
