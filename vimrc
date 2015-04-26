@@ -56,7 +56,7 @@ if has('gui_running')
   if has('gui_win32')
 	set guifont=Consolas:h14
   else	
-    set guifont=DejaVu_Sans_Mono:h14
+    "set guifont=DejaVu_Sans_Mono:h14
   endif	
 endif  
 
@@ -120,7 +120,7 @@ inoremap <silent> <C-Right>  <Esc>:wincmd l<CR>i
 
 " * shortcur for shell command
 nnoremap <C-X>  :!<Space>
-nnoremap <C-X>  <Esc>:!<Space>
+inoremap <C-X>  <Esc>:!<Space>
 
 " * shortcut for make
 nnoremap <F9>   :make<CR>
@@ -138,9 +138,9 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " * nodejs dev shortcut
 augroup node_dev
     autocmd!
-    autocmd FileType javascript nmap <F9> <ESC>:w<CR>:! node %<CR><CR>
-    autocmd FileType javascript imap <F9> <ESC>:w<CR>:! node %<CR><CR>i
 	autocmd FileType javascript set expandtab
+    autocmd FileType javascript nmap <F9> <ESC>:w<CR>:! node %<CR>
+    autocmd FileType javascript imap <F9> <ESC>:w<CR>:! node %<CR>
 augroup END
 
 " * shortcut for vimrc editing
