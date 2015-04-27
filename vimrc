@@ -146,3 +146,11 @@ augroup END
 " shortcut for vimrc editing
 nnoremap <Leader>rc :vsplit $MYVIMRC<CR>
 nnoremap <Leader>src :source $MYVIMRC<CR>
+
+" shortcut for cpp dev / OI
+augroup acm
+	autocmd!
+	autocmd FileType cpp nmap <F9> <ESC>:w<CR>:! clang -lstdc++ % -o exe && ./exe <input <CR>
+	autocmd FileType cpp imap <F9> <ESC>:w<CR>:! clang -lstdc++ % -o exe && ./exe <input <CR>
+augroup END
+
