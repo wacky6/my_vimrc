@@ -154,6 +154,25 @@ augroup acm
 	autocmd FileType cpp imap <F9> <ESC>:w<CR>:! clang -lstdc++ % -o exe && ./exe <input <CR>
 augroup END
 
+" * swig syntax highlight, nowrap
+augroup swigHtml
+    autocmd!
+    autocmd Bufenter *.swig set syn=html
+    autocmd Bufenter *.swig set nowrap
+augroup END
+
+" * html no wrap
+augroup html
+    autocmd!
+    autocmd FileType html set nowrap
+augroup END
+
+" * json file expand tab
+augroup json
+    autocmd!
+    autocmd Bufenter *.json set expandtab
+augroup END
+
 " * shortcut for file explorer
 nnoremap <C-O> :Explore<CR>
 inoremap <C-O> <ESC>:Explore<CR>
